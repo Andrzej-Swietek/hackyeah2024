@@ -12,3 +12,8 @@ spring:
       ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  profiles:
+    active: local
+  storage:
+    local:
+      base-path: classpath:storage/
