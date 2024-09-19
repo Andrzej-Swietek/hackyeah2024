@@ -7,22 +7,22 @@ spring:
         locator:
           enabled: true
       routes:
-#        - id: user-service
-#          uri: lb:http://USER-SERVICE
-#          predicates:
-#            - Path=/api/v1/user/**
-#        - id: company-service
-#          uri: lb:http://COMPANY-SERVICE
-#          predicates:
-#            - Path=/api/v1/company/**
-#        - id: project-service
-#          uri: lb:http://PROJECT-SERVICE
-#          predicates:
-#            - Path=/api/v1/project/**
-#        - id: feed-service
-#          uri: lb:http://FEED-SERVICE
-#          predicates:
-#            - Path=/api/v1/feed/**
+        - id: user-service
+          uri: lb:http://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user/**
+        - id: company-service
+          uri: lb:http://COMPANY-SERVICE
+          predicates:
+            - Path=/api/v1/company/**
+        - id: project-service
+          uri: lb:http://PROJECT-SERVICE
+          predicates:
+            - Path=/api/v1/project/**
+        - id: feed-service
+          uri: lb:http://FEED-SERVICE
+          predicates:
+            - Path=/api/v1/feed/**
 #        - id: notification-service
 #          uri: lb:http://NOTIFICATION-SERVICE
 #          predicates:

@@ -3,3 +3,6 @@ spring:
     import: optional:configserver:http://localhost:8888
   application:
     name: storage-service
+storage:
+  local:
+    base-path: classpath:storage/
