@@ -37,16 +37,18 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-      DB_VENDOR: postgres
-      DB_ADDR: ms_pg_sql
-      DB_PORT: 5432
-      DB_DATABASE: keycloak
-      DB_USER: hackyeah
-      DB_PASSWORD: hackyeah
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres/keycloak
+      KC_DB_USERNAME: hackyeah
+      KC_DB_PASSWORD: hackyeah
     networks:
       - microservices-net
+    volumes:
+      - ./keycloak/realm/realm-export.json:/opt/keycloak/data/import/realm-export.json
+      - ./keycloak/theme:/opt/keycloak/themes
     command:
       - "start-dev"
+      - "--import-realm"
 
   #  ================ Mailer Service ================
 
