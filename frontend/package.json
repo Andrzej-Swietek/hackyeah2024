@@ -10,6 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "^5.0.0-1667386184.dfbbb54",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.4.6",
     "@vueform/multiselect": "^2.5.8",
@@ -20,9 +22,11 @@
     "axios": "^1.6.7",
     "consola": "^3.2.3",
     "install": "^0.13.0",
+    "keycloak-js": "^25.0.5",
     "lodash": "^4.17.21",
     "nuxt": "^3.13.0",
     "pinia": "^2.0.28",
+    "remeda": "^2.14.0",
     "swiper": "^9.0.3",
     "tailwind-merge": "^1.14.0",
     "ui-vue-antd": "^1.0.6",

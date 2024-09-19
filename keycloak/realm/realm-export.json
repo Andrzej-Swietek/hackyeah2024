@@ -27,13 +27,13 @@
   "oauth2DevicePollingInterval": 5,
   "enabled": true,
   "sslRequired": "external",
-  "registrationAllowed": false,
-  "registrationEmailAsUsername": false,
-  "rememberMe": false,
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": true,
+  "rememberMe": true,
   "verifyEmail": false,
   "loginWithEmailAllowed": true,
   "duplicateEmailsAllowed": false,
-  "resetPasswordAllowed": false,
+  "resetPasswordAllowed": true,
   "editUsernameAllowed": false,
   "bruteForceProtected": false,
   "permanentLockout": false,
@@ -296,6 +296,35 @@
           "composite": false,
           "clientRole": true,
           "containerId": "29c7d051-47d8-4c00-9faf-0b3eb6ff2a72",
+          "attributes": {}
+        }
+      ],
+      "hackyeah": [
+        {
+          "id": "4151b89a-7d20-4098-a37b-f90d6d8de3b5",
+          "name": "ADMIN",
+          "description": "Admin role for developers",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "0d1b2506-711a-4074-9bfc-4ab7b3ca4860",
+          "attributes": {}
+        },
+        {
+          "id": "dad27db0-5585-47eb-831b-19ef156468ef",
+          "name": "CORPORATE",
+          "description": "Big corporation employee",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "0d1b2506-711a-4074-9bfc-4ab7b3ca4860",
+          "attributes": {}
+        },
+        {
+          "id": "212ac7f5-6693-4a47-a25c-c0e8f2b4a11d",
+          "name": "NGO",
+          "description": "Non gov organization member",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "0d1b2506-711a-4074-9bfc-4ab7b3ca4860",
           "attributes": {}
         }
       ],
@@ -666,6 +695,61 @@
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": false,
       "nodeReRegistrationTimeout": 0,
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "roles",
+        "basic",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    },
+    {
+      "id": "0d1b2506-711a-4074-9bfc-4ab7b3ca4860",
+      "clientId": "hackyeah",
+      "name": "hackyeah",
+      "description": "hackyeah microservices",
+      "rootUrl": "http://localhost:3000",
+      "adminUrl": "http://localhost:3000/*",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": [
+        "http://localhost:3000/*"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "oidc.ciba.grant.enabled": "false",
+        "backchannel.logout.session.required": "true",
+        "login_theme": "keycloak",
+        "post.logout.redirect.uris": "http://localhost:3000/*",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "display.on.consent.screen": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
       "defaultClientScopes": [
         "web-origins",
         "acr",
@@ -1389,6 +1473,10 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
+  "loginTheme": "keycloak",
+  "accountTheme": "keycloak.v3",
+  "adminTheme": "keycloak.v2",
+  "emailTheme": "keycloak",
   "eventsEnabled": false,
   "eventsListeners": [
     "jboss-logging"
@@ -2208,13 +2296,18 @@
   "firstBrokerLoginFlow": "first broker login",
   "attributes": {
     "cibaBackchannelTokenDeliveryMode": "poll",
-    "cibaExpiresIn": "120",
     "cibaAuthRequestedUserHint": "login_hint",
-    "oauth2DeviceCodeLifespan": "600",
     "oauth2DevicePollingInterval": "5",
-    "parRequestUriLifespan": "60",
+    "clientOfflineSessionMaxLifespan": "0",
+    "clientSessionIdleTimeout": "0",
+    "clientOfflineSessionIdleTimeout": "0",
     "cibaInterval": "5",
-    "realmReusableOtpCode": "false"
+    "realmReusableOtpCode": "false",
+    "cibaExpiresIn": "120",
+    "oauth2DeviceCodeLifespan": "600",
+    "parRequestUriLifespan": "60",
+    "clientSessionMaxLifespan": "0",
+    "organizationsEnabled": "false"
   },
   "keycloakVersion": "25.0.2",
   "userManagedAccessAllowed": false,

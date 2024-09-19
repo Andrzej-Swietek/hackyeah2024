@@ -7,7 +7,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       API_URL: process.env.API_URL,
-      BACKEND_URL: process.env.BACKEND_URL
+      BACKEND_URL: process.env.BACKEND_URL,
+      keycloakUrl: process.env.KEYCLOAK_URL,
+      keycloakRealm: process.env.KEYCLOAK_REALM,
+      keycloakClientId: process.env.KEYCLOAK_CLIENT_ID,
     },
   },
   routeRules: {

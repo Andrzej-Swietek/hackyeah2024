@@ -23,7 +23,9 @@ const getHeaders = (apiOpts: ApiClientOptions = {}) => {
     const apiOptions = getUserApiOpitions(apiOpts);
 
     if (apiOptions.withAuthorization) {
-        headers["Authorization"] = `Bearer ${getTokenFromLocalStorage()}`;
+        // headers["Authorization"] = `Bearer ${getTokenFromLocalStorage()}`;
+        const token = $keycloak?.token ?? '';
+        headers["Authorization"] = `Bearer ${token}`;
     }
 
     headers["accept"] = "application/json";

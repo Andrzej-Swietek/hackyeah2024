@@ -10,6 +10,8 @@ RUN curl -fsSL https://bun.sh/install | bash
 
 COPY frontend/package*.json ./
 
+RUN bun install
+
 EXPOSE 3000
 
 COPY . .
