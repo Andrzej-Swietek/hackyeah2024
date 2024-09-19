@@ -12,7 +12,7 @@ import java.util.Set;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/company")
+@RequestMapping(path="/api/v1/company")
 public class CompanyController {
 
     private final CompanyService companyService;
