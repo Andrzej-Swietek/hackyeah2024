@@ -41,6 +41,7 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres/keycloak
       KC_DB_USERNAME: hackyeah
       KC_DB_PASSWORD: hackyeah
+      REGISTRATION_API_URL: http://localhost:8222/user
     networks:
       - microservices-net
     volumes:
