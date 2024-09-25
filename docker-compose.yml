@@ -46,6 +46,7 @@ services:
     volumes:
       - ./keycloak/realm/realm-export.json:/opt/keycloak/data/import/realm-export.json
       - ./keycloak/theme:/opt/keycloak/themes
+      - ./keycloak/extensions:/opt/keycloak/providers
     command:
       - "start-dev"
       - "--import-realm"
