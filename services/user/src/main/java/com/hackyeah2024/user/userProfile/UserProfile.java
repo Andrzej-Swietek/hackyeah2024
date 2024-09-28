@@ -43,7 +43,7 @@ public class UserProfile {
     private Boolean isVolunteer;
 
     @OneToMany(
-            mappedBy = "userExperience",
+            mappedBy = "userProfile",
             cascade = CascadeType.ALL
     )
     private Set<PastExperience> pastExperience = new HashSet<>();

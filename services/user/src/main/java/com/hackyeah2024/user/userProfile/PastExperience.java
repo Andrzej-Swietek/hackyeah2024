@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
 public class PastExperience {
     @Id
     @SequenceGenerator(
-            name = "company_sequence",
+            name = "user_exp_sequence",
             sequenceName = "company_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "company_sequence"
+            generator = "user_exp_sequence"
     )
     private Long id;
 
