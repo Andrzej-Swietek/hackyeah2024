@@ -2,9 +2,7 @@ package com.hackyeah2024.user.userProfile;
 
 
 import com.hackyeah2024.user.exception.UserNotFoundException;
-import com.hackyeah2024.user.userProfile.requests.AddPastExperienceRequest;
-import com.hackyeah2024.user.userProfile.requests.AddUserProfileRequest;
-import com.hackyeah2024.user.userProfile.requests.EditUserProfileRequest;
+import com.hackyeah2024.user.userProfile.requests.*;
 import com.hackyeah2024.user.userProfile.responses.RichUserProfileResponse;
 import com.hackyeah2024.user.userProfile.responses.UserProfileResponse;
 import lombok.AllArgsConstructor;
@@ -97,6 +95,20 @@ public class UserProfileService {
         UserProfile updatedProfile = userProfileRepository.save(userProfile);
         return userProfileMapper
                 .toUserProfileResponse(updatedProfile);
+    }
+
+    public List<UserProfile> getProjectsByIndexes(PopulateRequest requestData) {
+        List<Long> ids = requestData.indexes().stream()
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
+        return userProfileRepository.findAllByIds(ids);
+    }
+
+    public List<UserProfile> getProjectsByKeycloakIndexes(PopulateByKeycloakRequest requestData) {
+        List<String> ids = requestData.indexes().stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
+        return userProfileRepository.findAllByKeycloakIds(ids);
     }
 
 

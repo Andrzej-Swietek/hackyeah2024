@@ -2,12 +2,15 @@ package com.hackyeah2024.company.ngo;
 
 import com.hackyeah2024.company.company.Company;
 import com.hackyeah2024.company.company.CompanyRepository;
+import com.hackyeah2024.company.company.PopulateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -55,4 +58,10 @@ public class NGOService {
         return ngoRepository.findAllNGOsWithVolunteers(pageable);
     }
 
+    public List<NGO> getNGOsByIndexes(PopulateRequest requestData) {
+        List<Long> ids = requestData.indexes().stream()
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
+        return ngoRepository.findAllByIds(ids);
+    }
 }

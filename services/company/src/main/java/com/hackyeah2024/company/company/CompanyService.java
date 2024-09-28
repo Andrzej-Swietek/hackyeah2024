@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -57,5 +58,12 @@ public class CompanyService {
 
     public Page<Company> getAllCompanies(Pageable pageable) {
         return companyRepository.findAll(pageable);
+    }
+
+    public List<Company> getCompaniesByIndexes(PopulateRequest requestData) {
+        List<Long> ids = requestData.indexes().stream()
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
+        return companyRepository.findAllByIds(ids);
     }
 }

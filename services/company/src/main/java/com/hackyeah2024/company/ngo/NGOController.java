@@ -1,5 +1,7 @@
 package com.hackyeah2024.company.ngo;
 
+import com.hackyeah2024.company.company.Company;
+import com.hackyeah2024.company.company.PopulateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -7,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -106,5 +109,12 @@ public class NGOController {
     public ResponseEntity<Void> deleteNGO(@PathVariable Long id) {
         ngoService.deleteCompany(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/populate")
+    public ResponseEntity<List<NGO>> populateProjects(@RequestBody PopulateRequest requestData) {
+        List<NGO> projects = ngoService
+                .getNGOsByIndexes(requestData);
+        return ResponseEntity.ok(projects);
     }
 }

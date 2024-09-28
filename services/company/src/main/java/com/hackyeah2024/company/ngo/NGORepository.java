@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Set;
 
 public interface NGORepository extends PagingAndSortingRepository<NGO, Long> {
@@ -38,4 +39,7 @@ public interface NGORepository extends PagingAndSortingRepository<NGO, Long> {
 
     @Query("SELECT ngo FROM NGO ngo WHERE SIZE(ngo.volunteers) > 0")
     Page<NGO> findAllNGOsWithVolunteers(Pageable pageable);
+
+    @Query("SELECT ngo FROM NGO ngo WHERE ngo.id IN :ids")
+    List<NGO> findAllByIds(@Param("ids") List<Long> ids);
 }
