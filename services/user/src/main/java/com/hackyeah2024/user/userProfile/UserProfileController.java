@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.hackyeah2024.user.userProfile.requests.PopulateRequest;
+import com.hackyeah2024.user.userProfile.requests.PopulateByKeycloakRequest;
+
 import java.util.List;
 
 @AllArgsConstructor
@@ -79,4 +82,23 @@ public class UserProfileController {
         userProfileService.deleteUserProfile(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/populate")
+    public ResponseEntity<List<UserProfile>> populateProjects(
+            @RequestBody PopulateRequest requestData
+    ) {
+        List<UserProfile> projects = userProfileService
+                .getProjectsByIndexes(requestData);
+        return ResponseEntity.ok(projects);
+    }
+
+    @PostMapping("/populateByKeycloak")
+    public ResponseEntity<List<UserProfile>> populateProjectsByKeycloak(
+            @RequestBody PopulateByKeycloakRequest requestData
+    ) {
+        List<UserProfile> projects = userProfileService
+                .getProjectsByKeycloakIndexes(requestData);
+        return ResponseEntity.ok(projects);
+    }
+
 }

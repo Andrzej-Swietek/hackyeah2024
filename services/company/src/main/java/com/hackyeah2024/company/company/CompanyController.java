@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -95,5 +96,12 @@ public class CompanyController {
         return ResponseEntity
                 .ok()
                 .build();
+    }
+
+    @PostMapping("/populate")
+    public ResponseEntity<List<Company>> populateProjects(@RequestBody PopulateRequest requestData) {
+        List<Company> projects = companyService
+                .getCompaniesByIndexes(requestData);
+        return ResponseEntity.ok(projects);
     }
 }

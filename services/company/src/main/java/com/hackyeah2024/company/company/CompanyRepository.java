@@ -47,4 +47,8 @@ public interface CompanyRepository extends PagingAndSortingRepository<Company, L
 
     // Delete a company by ID (inherited from JpaRepository)
     void deleteById(Long id);
+
+
+    @Query("SELECT c FROM Company c WHERE c.id IN :ids")
+    List<Company> findAllByIds(@Param("ids") List<Long> ids);
 }
