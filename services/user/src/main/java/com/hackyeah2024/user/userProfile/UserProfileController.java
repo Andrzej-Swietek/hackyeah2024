@@ -13,7 +13,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/user-profiles")
+@RequestMapping("/api/v1/user-profiles")
 public class UserProfileController {
 
     private final UserProfileService userProfileService;
