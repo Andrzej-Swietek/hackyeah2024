@@ -61,7 +61,7 @@ ipython_config.py
 .python-version
 
 # Environments
-.env
+frontend/.env
 .venv
 env/
 venv/
@@ -85,7 +85,7 @@ celerybeat.pid
 *.sage.py
 
 # dotenv
-.env
+frontend/.env
 .env.local
 .env.production
 .env.test
@@ -119,7 +119,7 @@ venv.bak/
 .ropeproject
 
 # Environments
-.env
+frontend/.env
 .venv
 env/
 venv/
