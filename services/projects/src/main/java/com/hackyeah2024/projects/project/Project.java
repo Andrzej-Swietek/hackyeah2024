@@ -7,6 +7,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -55,10 +56,10 @@ public class Project {
 
     private String category;
 
-
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Builder.Default
     @OrderBy("stageOrder ASC")
-    private Set<Stage> stages;
+    private Set<Stage> stages = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "current_stage_id")

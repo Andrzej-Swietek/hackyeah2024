@@ -28,18 +28,11 @@ public class Stage {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "project_id", nullable = false)
-    private Project project;
-
     @Column(nullable = false)
     private Integer stageOrder; // To define the order of stages
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OrderBy("stageOrder ASC")
-    private Set<Stage> stages;
 
-    @ManyToOne
-    @JoinColumn(name = "current_stage_id")
-    private Stage currentStage; // To track the current stage of the project
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
+    private Project project;
 }
