@@ -1,5 +1,6 @@
 package com.hackyeah2024.projects.project;
 
+import com.hackyeah2024.projects.project.requests.PopulateRequest;
 import com.hackyeah2024.projects.project.requests.ProjectRequest;
 import com.hackyeah2024.projects.project.requests.StageRequest;
 import com.hackyeah2024.projects.project.responses.ProjectResponse;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -88,5 +90,13 @@ public class ProjectController {
     public ResponseEntity<Void> setCurrentStage(@PathVariable Long id, @RequestParam Long stageId) {
         projectService.setCurrentStage(id, stageId);
         return ResponseEntity.noContent().build();
+    }
+
+
+    @PostMapping("/populate")
+    public ResponseEntity<List<Project>> populateProjects(@RequestBody PopulateRequest requestData) {
+        List<Project> projects = projectService
+                .getProjectsByIndexes(requestData);
+        return ResponseEntity.ok(projects);
     }
 }

@@ -1,13 +1,16 @@
 package com.hackyeah2024.projects.project;
 
+import com.hackyeah2024.projects.project.requests.PopulateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -69,5 +72,12 @@ public class ProjectService {
         }
         project.setCurrentStage(stage);
         projectRepository.save(project);
+    }
+
+    public List<Project> getProjectsByIndexes(PopulateRequest requestData) {
+        List<Long> ids = requestData.indexes().stream()
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
+        return projectRepository.findAllByIds(ids);
     }
 }
