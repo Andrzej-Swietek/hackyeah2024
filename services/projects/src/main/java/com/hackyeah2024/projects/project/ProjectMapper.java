@@ -4,6 +4,7 @@ import com.hackyeah2024.projects.project.requests.ProjectRequest;
 import com.hackyeah2024.projects.project.requests.StageRequest;
 import com.hackyeah2024.projects.project.responses.ProjectResponse;
 import com.hackyeah2024.projects.project.responses.StageResponse;
+import com.hackyeah2024.projects.project.responses.VolunteerResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -52,13 +53,20 @@ public class ProjectMapper {
                 project.getCreatedDate(),
                 project.getLastModifiedDate(),
                 project.getStages() != null ? project.getStages().stream().map(ProjectMapper::toResponse).collect(Collectors.toSet()) : null,
-                project.getCurrentStage() != null ? toResponse(project.getCurrentStage()) : null);
+                project.getCurrentStage() != null ? toResponse(project.getCurrentStage()) : null,
+                project.getVolunteers() != null ? project.getVolunteers().stream().map(ProjectMapper::toVolunteerResponse).collect(Collectors.toSet()) : null
+                );
     }
 
     public static Stage toEntity(StageRequest stageRequest) {
         return Stage.builder()
                 .name(stageRequest.name())
                 .build();
+    }
+
+    public static VolunteerResponse toVolunteerResponse(Volunteer volunteer) {
+        return new VolunteerResponse(volunteer.getId(), volunteer.getUserId(), volunteer.getLocation(),
+                volunteer.getStatus(), volunteer.getStartDate(), volunteer.getEndDate());
     }
 
     public static StageResponse toResponse(Stage stage) {

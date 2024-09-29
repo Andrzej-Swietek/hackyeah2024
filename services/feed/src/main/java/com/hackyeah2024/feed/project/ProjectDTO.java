@@ -1,9 +1,9 @@
-package com.hackyeah2024.projects.project.responses;
+package com.hackyeah2024.feed.project;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
-public record ProjectResponse(
+public record ProjectDTO(
         Long id,
         String name,
         String description,
@@ -15,11 +15,11 @@ public record ProjectResponse(
         LocalDateTime endDate,
         Integer estimatedVolunteers,
         Integer actualVolunteers,
+        List<VolunteerDTO> volunteers,
         String category,
+        List<StageDTO> stages,
+        StageDTO currentStage,
         LocalDateTime createdDate,
-        LocalDateTime lastModifiedDate,
-        Set<StageResponse> stages,
-        StageResponse currentStage,
-        Set<VolunteerResponse> volunteers
+        LocalDateTime lastModifiedDate
 ) {
 }
