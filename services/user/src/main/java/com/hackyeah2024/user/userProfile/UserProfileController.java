@@ -29,6 +29,11 @@ public class UserProfileController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/volunteers")
+    public ResponseEntity<List<RichUserProfileResponse>> getVolunteers() {
+        var result = userProfileService.getVolunteers();
+        return ResponseEntity.ok(result);
+    }
 
     @GetMapping("/rich-profile/{id}")
     public ResponseEntity<RichUserProfileResponse> getRichUserProfile(@PathVariable Long id) {

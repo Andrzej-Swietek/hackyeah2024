@@ -7,7 +7,7 @@ import recommender.RecommenderOuterClass;
 import java.util.List;
 
 @Service
-public class RecommenderService {
+public class  RecommenderService {
 
     public List<String> getRecommendation(
             String userId,

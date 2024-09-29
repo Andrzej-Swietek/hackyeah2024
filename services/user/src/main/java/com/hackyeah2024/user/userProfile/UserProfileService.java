@@ -112,4 +112,9 @@ public class UserProfileService {
     }
 
 
+    public List<RichUserProfileResponse> getVolunteers() {
+        return userProfileRepository.findVolunteers().stream()
+                .map(userProfileMapper::toRichUserProfileResponse)
+                .collect(Collectors.toList());
+    }
 }

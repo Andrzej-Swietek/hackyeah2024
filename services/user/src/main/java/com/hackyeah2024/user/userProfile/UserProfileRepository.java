@@ -23,4 +23,6 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, Long> 
 
     @Query("SELECT p FROM UserProfile p WHERE p.keycloakId IN :ids")
     List<UserProfile> findAllByKeycloakIds(@Param("ids") List<String> ids);
+
+//    <S extends UserProfile> S save(S entity);
 }

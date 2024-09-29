@@ -4,6 +4,7 @@ package com.hackyeah2024.feed.feed;
 import com.hackyeah2024.feed.recommender.RecommenderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ public class FeedController {
     private final RecommenderService recommenderService;
     private final RequesterMapper mapper;
 
+    @GetMapping
     public ResponseEntity<?> getDefaultFeed(
             @PathVariable(name = "user-id") String userId,
             @PathVariable(name = "requesterType") String requesterType,
@@ -26,7 +28,7 @@ public class FeedController {
                 mapper.toRequesterType(requesterType),
                 mapper.toRequestedType(requestedType)
         );
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(recommendation);
     }
 
     public ResponseEntity<?> getNGOFeed(){

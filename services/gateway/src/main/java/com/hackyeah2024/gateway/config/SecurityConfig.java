@@ -21,6 +21,7 @@ public class SecurityConfig {
                                 .pathMatchers("/eureka/**").permitAll()
                                 .pathMatchers("/actuator/**").permitAll()
                                 .pathMatchers("/api/v1/company/**").permitAll()
+                                .pathMatchers("/api/v1/feed/**").permitAll()
                                 .pathMatchers("/api/v1/user-profiles/**").permitAll()
                                 .pathMatchers("/api/v1/project/**").permitAll()
                                 .anyExchange().authenticated()

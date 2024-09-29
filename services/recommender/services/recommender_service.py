@@ -1,6 +1,7 @@
 import proto.recommender_pb2
 import proto.recommender_pb2_grpc
 from adapters.company_adapter import CompanyAdapter
+from adapters.http_client_adapter import HTTPClientAdapter
 from adapters.ngo_adapter import NGOAdapter
 from adapters.volunteer_adapter import VolunteerAdapter
 
@@ -12,9 +13,9 @@ class RecommenderService(proto.recommender_pb2_grpc.RecommenderServicer):
 
     def __init__(self):
         # Initialize the adapters for each service (HTTP-based services)
-        self.company_adapter = CompanyAdapter(base_url="http://company-service.local")
-        self.ngo_adapter = NGOAdapter(base_url="http://ngo-service.local")
-        self.volunteer_adapter = VolunteerAdapter(base_url="http://volunteer-service.local")
+        self.company_adapter = CompanyAdapter(base_url="http://localhost:8225/api/v1/company")
+        self.ngo_adapter = NGOAdapter(base_url="http://localhost:8225/api/v1/ngo", http_client=HTTPClientAdapter())
+        self.volunteer_adapter = VolunteerAdapter(base_url="http://localhost:8224/api/v1/user-profiles")
 
     def GetRecommendations(self, request, context):
         """
@@ -24,6 +25,10 @@ class RecommenderService(proto.recommender_pb2_grpc.RecommenderServicer):
         user_id = request.user_id
         requester_type = request.requester_type
         requested_type = request.requested_type
+
+        print(user_id)
+        print(requested_type)
+        print(requester_type)
 
         recommended_items = []
 
