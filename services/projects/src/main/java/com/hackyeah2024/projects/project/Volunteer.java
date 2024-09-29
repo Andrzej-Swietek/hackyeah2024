@@ -32,11 +32,9 @@ public class Volunteer {
     private String userId;
 
     private String location;
-    private String status; // e.g., "Pending", "Active", "Completed"
+    private String status; // e.g., "Pending", "Accepted"
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private Integer estimatedVolunteers;
-    private Integer actualVolunteers;
 
     @ManyToMany(mappedBy = "volunteers", cascade = CascadeType.ALL)
     private Set<Project> projects;
