@@ -10,7 +10,7 @@ spring:
         - id: user-service
           uri: lb:http://USER-SERVICE
           predicates:
-            - Path=/api/v1/user/**
+            - Path=/api/v1/user-profiles/**
         - id: company-service
           uri: lb:http://COMPANY-SERVICE
           predicates:
@@ -27,3 +27,6 @@ spring:
 #          uri: lb:http://NOTIFICATION-SERVICE
 #          predicates:
 #            - Path=/api/v1/notification/**
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

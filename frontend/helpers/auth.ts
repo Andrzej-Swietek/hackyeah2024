@@ -52,31 +52,27 @@ export const saveUserAndTokenToStore = (
 
 export const saveUserToStore = (user: Authenticatable, isAdmin: boolean): void => {
     const userStore = useUserStore();
-    // const favoriteStore = useFavoriteStore();
-
     userStore.$patch((state: any) => {
         state.user = user;
         state.isAdmin = isAdmin;
     });
-
-    // favoriteStore.syncFavorites();
 };
-
 
 export const removeUserAndToken = (): void => {
     const userStore = useUserStore();
-    // const favoriteStore = useFavoriteStore();
 
-    removeTokenFromLocalStorage();
+    // Clear token from local storage or state
+    removeTokenFromLocalStorage(); // Assuming you have this method to remove the token from storage
 
+    // Clear user data from the store
     userStore.$patch((state: any) => {
         state.user = null;
         state.token = null;
         state.userElearningCourses = [];
         state.isAdmin = false;
     });
-    // favoriteStore.clear();
 };
+
 
 export const saveTokenToLocalStorage = (token: AuthToken): void => {
     localStorage.setItem(STORAGE_TOKEN_KEY, token.accessToken);

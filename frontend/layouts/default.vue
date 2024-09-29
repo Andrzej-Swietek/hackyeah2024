@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col items-stretch h-[100vh]">
-        <Nav/>
+
         <div class="mb-10 grow">
             <slot />
         </div>

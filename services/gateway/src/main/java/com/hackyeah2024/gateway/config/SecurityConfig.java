@@ -20,8 +20,10 @@ public class SecurityConfig {
                         exchange
                                 .pathMatchers("/eureka/**").permitAll()
                                 .pathMatchers("/actuator/**").permitAll()
-                                .pathMatchers("/company/**").permitAll()
-                                .pathMatchers("/project/**").permitAll()
+                                .pathMatchers("/api/v1/company/**").permitAll()
+                                .pathMatchers("/api/v1/feed/**").permitAll()
+                                .pathMatchers("/api/v1/user-profiles/**").permitAll()
+                                .pathMatchers("/api/v1/project/**").permitAll()
                                 .anyExchange().authenticated()
                 ).oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
 
