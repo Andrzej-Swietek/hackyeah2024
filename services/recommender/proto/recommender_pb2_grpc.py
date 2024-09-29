@@ -16,7 +16,7 @@ class RecommenderStub(object):
             channel: A grpc.Channel.
         """
         self.GetRecommendations = channel.unary_unary(
-                '/recommender.Recommender/GetRecommendations',
+                '/Recommender/GetRecommendations',
                 request_serializer=recommender__pb2.RecommendationRequest.SerializeToString,
                 response_deserializer=recommender__pb2.RecommendationResponse.FromString,
                 )
@@ -43,7 +43,7 @@ def add_RecommenderServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'recommender.Recommender', rpc_method_handlers)
+            'Recommender', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -63,7 +63,7 @@ class Recommender(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/recommender.Recommender/GetRecommendations',
+        return grpc.experimental.unary_unary(request, target, '/Recommender/GetRecommendations',
             recommender__pb2.RecommendationRequest.SerializeToString,
             recommender__pb2.RecommendationResponse.FromString,
             options, channel_credentials,

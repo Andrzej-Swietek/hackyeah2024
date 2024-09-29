@@ -6,7 +6,14 @@ class CompanyAdapter:
         self.base_url = base_url
         self.http_client = HTTPClientAdapter()
 
-    def get_company_recommendations(self, user_id: str):
-        url = f"{self.base_url}/companies/recommendations"
-        params = {"user_id": user_id}
-        return self.http_client.get(url, params)
+    def get_company_recommendations(self):
+        url = f"{self.base_url}"
+        params = {"page": 1, "size": 2000000}
+
+        response = self.http_client.get(url, params)
+
+        if response.status_code == 200:
+            print(response.json())
+            return response.json()
+        else:
+            raise Exception(f"Failed to get recommendations: {response.status_code}, {response.text}")

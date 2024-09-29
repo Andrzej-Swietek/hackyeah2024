@@ -1,7 +1,4 @@
 package com.hackyeah2024.feed.project;
-
-import com.hackyeah2024.feed.company.CompanyDTO;
-import com.hackyeah2024.feed.company.NgoDTO;
 import com.hackyeah2024.feed.company.PopulateRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +14,7 @@ import java.util.Optional;
 )
 public interface ProjectClient {
 
-    @PostMapping("/api/v1/company/populate")
-    Optional<List<CompanyDTO>> populateCompany(@RequestBody PopulateRequest requestBody);
+    @PostMapping("/api/v1/project/populate")
+    Optional<List<ProjectDTO>> populateCompany(@RequestBody PopulateRequest requestBody);
 
 }
