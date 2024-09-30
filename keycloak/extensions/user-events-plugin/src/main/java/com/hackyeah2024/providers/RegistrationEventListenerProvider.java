@@ -91,4 +91,5 @@ public class RegistrationEventListenerProvider implements EventListenerProvider,
     public String getId() {
         return "registration-event-listener";
     }
+
 }
