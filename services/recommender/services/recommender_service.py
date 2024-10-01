@@ -14,9 +14,9 @@ class RecommenderService(proto.recommender_pb2_grpc.RecommenderServicer):
     def __init__(self):
         # Initialize the adapters for each service (HTTP-based services)
         print("[Initialization]")
-        # self.company_adapter = CompanyAdapter(base_url="http://localhost:8225/api/v1/company")
-        # self.ngo_adapter = NGOAdapter(base_url="http://localhost:8225/api/v1/ngo", http_client=HTTPClientAdapter())
-        # self.volunteer_adapter = VolunteerAdapter(base_url="http://localhost:8224/api/v1/user-profiles")
+        self.company_adapter = CompanyAdapter(base_url="http://localhost:8225/api/v1/company")
+        self.ngo_adapter = NGOAdapter(base_url="http://localhost:8225/api/v1/ngo", http_client=HTTPClientAdapter())
+        self.volunteer_adapter = VolunteerAdapter(base_url="http://localhost:8224/api/v1/user-profiles")
 
 
     def GetRecommendations(self, request, context):
