@@ -1,0 +1,9 @@
+GRPC /Recommender/GetRecommendations
+Host: localhost:50051
+Content-Type: application/grpc
+
+{
+  "user_id": "example_user_id",
+  "requester_type": "REQUESTER_COMPANY",
+  "requested_type": "REQUESTED_NGO"
+}

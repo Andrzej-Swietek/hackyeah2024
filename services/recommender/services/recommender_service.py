@@ -13,15 +13,18 @@ class RecommenderService(proto.recommender_pb2_grpc.RecommenderServicer):
 
     def __init__(self):
         # Initialize the adapters for each service (HTTP-based services)
-        self.company_adapter = CompanyAdapter(base_url="http://localhost:8225/api/v1/company")
-        self.ngo_adapter = NGOAdapter(base_url="http://localhost:8225/api/v1/ngo", http_client=HTTPClientAdapter())
-        self.volunteer_adapter = VolunteerAdapter(base_url="http://localhost:8224/api/v1/user-profiles")
+        print("[Initialization]")
+        # self.company_adapter = CompanyAdapter(base_url="http://localhost:8225/api/v1/company")
+        # self.ngo_adapter = NGOAdapter(base_url="http://localhost:8225/api/v1/ngo", http_client=HTTPClientAdapter())
+        # self.volunteer_adapter = VolunteerAdapter(base_url="http://localhost:8224/api/v1/user-profiles")
+
 
     def GetRecommendations(self, request, context):
         """
         Processes gRPC requests and forwards the request to appropriate HTTP services based on
         requester_type and requested_type.
         """
+        print("[Get Recommendation Request]")
         user_id = request.user_id
         requester_type = request.requester_type
         requested_type = request.requested_type
@@ -31,6 +34,8 @@ class RecommenderService(proto.recommender_pb2_grpc.RecommenderServicer):
         print(requester_type)
 
         recommended_items = []
+
+        return proto.recommender_pb2.RecommendationResponse(recommended_items=[str(user_id), 'x', 'y'])
 
         # Handle the requester type COMPANY
         if requester_type == proto.recommender_pb2.RequesterType.COMPANY:

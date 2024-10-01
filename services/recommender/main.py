@@ -1,7 +1,13 @@
 import grpc
 from concurrent import futures
-from proto import recommender_pb2_grpc  # Import the generated gRPC code
-from services.recommender_service import RecommenderService  # Import your service implementation
+import sys
+import os
+
+from proto import recommender_pb2_grpc
+from services.recommender_service import RecommenderService
+
+# Add the root directory (parent of proto folder) to sys.path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
 class AppConfig:
@@ -11,7 +17,7 @@ class AppConfig:
 
 
 class App:
-    def __init__(self, config):
+    def __init__(self, config: AppConfig):
         self.config = config
         # Create a gRPC server with a thread pool of 10 workers
         self.server = grpc.server(
@@ -25,6 +31,7 @@ class App:
 
         # Bind the server to the host and port
         self.server.add_insecure_port(f"{self.config.host}:{self.config.port}")
+        # self.server.add_http2_port('[::]:50052')
 
     def start(self):
         # Start the gRPC server
@@ -35,9 +42,9 @@ class App:
 
 if __name__ == "__main__":
     # Initialize the configuration with host and port
-    config = AppConfig(host='localhost', port=50051)
+    configuration = AppConfig(host='localhost', port=50051)
 
     # Create and start the gRPC application
-    app = App(config)
+    app = App(configuration)
     app.start()
 
