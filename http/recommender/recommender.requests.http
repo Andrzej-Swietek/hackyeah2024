@@ -1,4 +1,4 @@
-GRPC localhsot:50051/Recommender/GetRecommendations
+GRPC /Recommender/GetRecommendations
 Host: localhost:50051
 Content-Type: application/grpc
 
