@@ -3,14 +3,8 @@ package com.hackyeah2024.feed.config;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-import recommender.RecommenderGrpc;
-import recommender.RecommenderOuterClass;
-import recommender.RecommenderOuterClass.RequesterType;
-import recommender.RecommenderOuterClass.RequesterType;
-import recommender.RecommenderOuterClass.RequestedType;
-
+import com.hackyeah2024.feed.recommender.RecommenderOuterClass;
+import com.hackyeah2024.feed.recommender.RecommenderGrpc;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,10 +14,10 @@ public class RecommenderClient {
     private final ManagedChannel channel;
     private final RecommenderGrpc.RecommenderBlockingStub stub;
     private final String userId;
-    private final RequestedType requestedType;
-    private final RequesterType requesterType;
+    private final RecommenderOuterClass.RequestedType requestedType;
+    private final RecommenderOuterClass.RequesterType requesterType;
 
-    public RecommenderClient(String userId, RequesterType requesterType, RequestedType requestedType) {
+    public RecommenderClient(String userId, RecommenderOuterClass.RequesterType requesterType, RecommenderOuterClass.RequestedType requestedType) {
         this.userId = userId;
         this.requesterType = requesterType;
         this.requestedType = requestedType;

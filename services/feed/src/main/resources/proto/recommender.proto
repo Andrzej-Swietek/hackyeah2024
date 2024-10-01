@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package recommender;
-
 // The request message containing the user ID for recommendations.
 message RecommendationRequest {
   string user_id = 1; // User ID for which to fetch recommendations

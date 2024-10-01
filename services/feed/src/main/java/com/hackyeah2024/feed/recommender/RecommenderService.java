@@ -2,7 +2,6 @@ package com.hackyeah2024.feed.recommender;
 
 import com.hackyeah2024.feed.config.RecommenderClient;
 import org.springframework.stereotype.Service;
-import recommender.RecommenderOuterClass;
 
 import java.util.List;
 
